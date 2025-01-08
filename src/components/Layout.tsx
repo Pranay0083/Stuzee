@@ -9,6 +9,7 @@ import {
   MessageCircle,
   Edit,
   HelpCircle,
+  ChartArea,
 } from "lucide-react";
 
 const Layout: React.FC = () => {
@@ -23,6 +24,7 @@ const Layout: React.FC = () => {
       label: "Discussions",
       icon: <MessageCircle size={20} />,
     },
+    { href: "/analytics", label: "Analytics", icon: <ChartArea size={20} /> },
     { href: "/assignments", label: "Assignments", icon: <Edit size={20} /> },
     { href: "/feedback", label: "Feedback", icon: <Edit size={20} /> },
     { href: "/help", label: "Help & Support", icon: <HelpCircle size={20} /> },
@@ -41,13 +43,12 @@ const Layout: React.FC = () => {
     setIsSidebarOpen((prev) => !prev);
   };
 
-  // Function to check if a nav item is active
   const isActive = (href: string) => {
     return location.pathname === href;
   };
 
   return (
-    <div className="h-screen flex flex-col bg-[#EBF4F5]">
+    <div className="h-screen flex flex-col bg-[#EBF4F5] font-roboto">
       {/* Header */}
       <header className="h-16 bg-gradient-to-r from-[#EBF4F5] via-[#DCE7F0] to-[#B5C6E0] text-gray-800 flex items-center justify-between px-4 fixed w-full top-0 z-50">
         <div className="flex items-center gap-1">
@@ -58,11 +59,11 @@ const Layout: React.FC = () => {
           >
             <Menu size={24} />
           </button>
-          <span className="text-xl font-bold">Stuzee</span>
+          <span className="text-xl font-bold font-playfair">Stuzee</span>
         </div>
 
-        <h2 className="text-lg font-semibold absolute left-1/2 -translate-x-1/2 hidden md:block text-gray-700">
-        &lt; {getCurrentTitle()} /&gt;
+        <h2 className="text-lg font-semibold absolute left-1/2 -translate-x-1/2 hidden md:block text-gray-700 font-playfair">
+          &lt; {getCurrentTitle()} /&gt;
         </h2>
 
         <div className="flex items-center gap-4">
@@ -91,14 +92,15 @@ const Layout: React.FC = () => {
         >
           <nav className="p-4 flex-grow">
             <ul className="space-y-2 flex flex-col justify-center h-full">
-              {navigationItems.slice(0, 4).map((item) => (
+              {navigationItems.slice(0, 5).map((item) => (
                 <li key={item.href}>
                   <Link
                     to={item.href}
                     className={`flex items-center px-2 py-2 rounded-xl transition-all duration-200
-                      ${isActive(item.href)
-                        ? 'bg-[#B5C6E0]/40 text-gray-900 font-medium shadow-sm'
-                        : 'hover:bg-[#B5C6E0]/20 active:bg-[#B5C6E0]/30 text-gray-700'
+                      ${
+                        isActive(item.href)
+                          ? "bg-[#B5C6E0]/40 text-gray-900 font-medium shadow-sm"
+                          : "hover:bg-[#B5C6E0]/20 active:bg-[#B5C6E0]/30 text-gray-700"
                       } whitespace-nowrap`}
                   >
                     <span className="mr-3">{item.icon}</span>
@@ -113,14 +115,15 @@ const Layout: React.FC = () => {
 
           <nav className="py-6 px-4">
             <ul className="space-y-2">
-              {navigationItems.slice(4).map((item) => (
+              {navigationItems.slice(5).map((item) => (
                 <li key={item.href}>
                   <Link
                     to={item.href}
                     className={`flex items-center px-2 py-2 rounded-xl transition-all duration-200
-                      ${isActive(item.href)
-                        ? 'bg-[#B5C6E0]/40 text-gray-900 font-medium shadow-sm'
-                        : 'hover:bg-[#B5C6E0]/20 active:bg-[#B5C6E0]/30 text-gray-700'
+                      ${
+                        isActive(item.href)
+                          ? "bg-[#B5C6E0]/40 text-gray-900 font-medium shadow-sm"
+                          : "hover:bg-[#B5C6E0]/20 active:bg-[#B5C6E0]/30 text-gray-700"
                       } whitespace-nowrap`}
                   >
                     <span className="mr-3">{item.icon}</span>
@@ -149,4 +152,4 @@ const Layout: React.FC = () => {
   );
 };
 
-export default Layout
+export default Layout;

@@ -9,6 +9,7 @@ import Feedback from '../pages/Feedback';
 import Assignments from '../pages/Assignments';
 import HelpAndSupport from '../pages/HelpAndSupport';
 import Profile from '../pages/Profile';
+import Analytics from '../pages/Analytics';
 
 const AppRoutes = () => (
   <Routes>
@@ -20,6 +21,7 @@ const AppRoutes = () => (
       <Route path="assignments" element={<Assignments />} />
       <Route path="help" element={<HelpAndSupport />} />
       <Route path="profile" element={<Profile />} />
+      <Route path="analytics" element={<Analytics />} />
       <Route path="*" element={<Notfound />} />
     </Route>
   </Routes>
